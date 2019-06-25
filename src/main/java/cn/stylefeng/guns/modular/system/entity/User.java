@@ -31,7 +31,7 @@ public class User implements Serializable {
     private String avatar;
 
     /**
-     * 账号
+     * 账号avatar
      */
     @TableField("account")
     private String account;

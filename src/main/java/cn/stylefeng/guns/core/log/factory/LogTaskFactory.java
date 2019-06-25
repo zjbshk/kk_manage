@@ -62,6 +62,7 @@ public class LogTaskFactory {
                 LoginLog loginLog = LogFactory.createLoginLog(
                         LogType.LOGIN_FAIL, null, "账号:" + username + "," + msg, ip);
                 try {
+                    logger.error(loginLog.toString());
                     loginLogMapper.insert(loginLog);
                 } catch (Exception e) {
                     logger.error("创建登录失败异常!", e);

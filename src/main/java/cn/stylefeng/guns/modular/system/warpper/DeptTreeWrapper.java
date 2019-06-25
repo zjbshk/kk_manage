@@ -28,21 +28,15 @@ import java.util.List;
 public class DeptTreeWrapper {
 
     public static void clearNull(List<TreeviewNode> list) {
-        if (list == null) {
+        if (list == null || list.size() == 0) {
             return;
-        } else {
-            if (list.size() == 0) {
-                return;
+        }
+        for (TreeviewNode node : list) {
+            List<TreeviewNode> childNodes = node.getNodes();
+            if (childNodes != null && childNodes.size() == 0) {
+                node.setNodes(null);
             } else {
-                for (TreeviewNode node : list) {
-                    if (node.getNodes() != null) {
-                        if (node.getNodes().size() == 0) {
-                            node.setNodes(null);
-                        } else {
-                            clearNull(node.getNodes());
-                        }
-                    }
-                }
+                clearNull(childNodes);
             }
         }
     }
